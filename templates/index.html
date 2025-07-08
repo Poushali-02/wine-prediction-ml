@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if prediction_text %}
+        <div class="message {% if not prediction_text %}hidden{% endif %}">
+            <h1>{{ prediction_text }}</h1>
+        </div>
+        {% else %}
+        <div class="form {% if prediction_text %}hidden{% endif %}">
+        <form method="post" action="/predict">
+            <label for="type">Select wine type</label>
+            <select name="type" id="type" required>
+                <option value="1">Red</option>
+                <option value="0">White</option>
+            </select>
+            <br>
+
+            <label for="fixed acidity">Fixed Acidity</label>
+            <div class="number-input">
+                <input type="number" name="fixed acidity" step="0.01" id="fixed acidity" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="volatile acidity">Volatile Acidity</label>
+            <div class="number-input">
+                <input type="number" name="volatile acidity" step="0.01" id="volatile acidity" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="number-input">
+            <label for="citric acid">Citric Acid</label>
+            <input type="number" name="citric acid" step="0.01" id="citric acid" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+
+            <label for="residual sugar">Residual Sugar</label>
+            <div class="number-input">
+            <input type="number" name="residual sugar" step="0.01" id="residual sugar" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+
+            <label for="chlorides">Chlorides</label>
+            <div class="number-input">
+            <input type="number" name="chlorides" step="0.001" id="chlorides" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="free sulfur dioxide">Free Sulfur Dioxide</label>
+            <div class="number-input">
+            <input type="number" name="free sulfur dioxide" step="0.01" id="free sulfur dioxide" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="density">Density</label>
+            <div class="number-input">
+            <input type="number" name="density" step="0.00001" id="density" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="pH">pH</label>
+            <div class="number-input">
+            <input type="number" name="pH" step="0.01" id="pH" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="sulphates">Sulphates</label>
+            <div class="number-input">
+            <input type="number" name="sulphates" step="0.01" id="sulphates" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            
+            <label for="alcohol">Alcohol</label>
+            <div class="number-input">
+            <input type="number" name="alcohol" step="0.01" id="alcohol" required>
+                <div class="btn-group">
+                    <button type="button" class="decrement">−</button>
+                    <button type="button" class="increment">+</button>
+                </div>
+            </div>
+            <br>
+            <button type="submit">How's the Wine?</button>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
